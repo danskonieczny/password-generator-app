@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stellar Password Generator
 
-## Getting Started
+A modern, secure, and responsive password generator web app built with **Next.js 14**, **React 18**, **TypeScript**, and **Tailwind CSS** — inspired by the "Stellar" visual style from Cruip.
 
-First, run the development server:
+All password generation happens **locally in your browser** for privacy and maximum security.
 
-```bash
+---
+
+## ✨ Features
+
+- **Modern design:** Glassmorphism cards, animated starfield background, vivid accent colors
+- **Client-side only:** Passwords are generated securely on your device, never sent to any server
+- **Automatic updates:** The password regenerates instantly as you change any option (length, charset)
+- **One-page navigation:** All sections (Generator, Trivia, FAQ, Tips, Stats) with smooth scrolling
+- **Mobile friendly:** Responsive, beautiful on any device
+- **Copy-to-clipboard:** Convenient password copying with one click
+- **Best practices:** Quick security tips and statistics provided for every user
+
+---
+
+## 🧭 App Sections
+
+- **Generator:** Create strong, customizable passwords. Choose length, include uppercase, lowercase, numbers, and symbols. Copy or regenerate as you wish.
+- **Trivia:** Fun facts about passwords, breaches, and security habits.
+- **FAQ:** Common questions about safe password usage and how the generator works.
+- **Tips:** Key reminders and good practices for password security.
+- **Stats:** Numbers that open your eyes — password strengths, time-to-crack, leaks, and 2FA usage.
+
+---
+
+## 🛠️ Technology Stack
+
+- [Next.js 14](https://nextjs.org/) (App Router)
+- [React 18](https://react.dev)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) (customized Stellar palette)
+- [lucide-react](https://lucide.dev/) (icon pack)
+
+---
+
+## 🚀 Usage
+
+**Local development:**
+
+git clone https://github.com/danskonieczny/password-generator-app.git
+cd stellar-password-generator
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Vercel deployment:**  
+This project is 100% compatible with [Vercel](https://vercel.com). Just import your repo and deploy — no extra configuration required.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔒 Security & Privacy
 
-To learn more about Next.js, take a look at the following resources:
+- **All password logic runs 100% client-side.**
+- **Nothing is ever sent or stored on any server.**
+- **No analytics, no ads, no trackers.**  
+- **You alone see your generated password.**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚙️ Customization
 
-## Deploy on Vercel
+- Change themes via `tailwind.config.ts`
+- Content in FAQ, Tips, Trivia, Stats can be edited in app code
+- Adjust number/effect of stars in `StarfieldBackground.tsx`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+MIT — free to use, fork, share, and adapt.
+
+> **Made with ❤️ by danskonieczny 
+> Inspired by the Stellar demo from [Cruip.com](https://cruip.com/demos/stellar/)**
+
+---
