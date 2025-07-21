@@ -38,7 +38,6 @@ export default function PasswordGenerator() {
     setTimeout(() => setCopied(false), 1200);
   }
 
-  // Automatyczne generowanie hasła przy każdej zmianie opcji:
   useEffect(() => {
     generate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -110,7 +109,7 @@ export default function PasswordGenerator() {
               value={pwd}
               readOnly
               spellCheck={false}
-              className="w-full px-4 py-3 rounded-lg border text-xl font-mono tracking-widest bg-stellarBg/80 outline-stellarAccent text-white"
+              className="w-full px-4 pr-20 py-3 rounded-lg border text-xl font-mono tracking-widest bg-stellarBg/80 outline-stellarAccent text-white"
               style={{ letterSpacing: "0.12em" }}
             />
             <button
