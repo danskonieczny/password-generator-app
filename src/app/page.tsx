@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import Navigation from "./components/Navigation";
 import PasswordGenerator from "./components/PasswordGenerator";
+import StarfieldBackground from "./components/StarfieldBackground";
 
 const SECTIONS = [
   { key: "generator", label: "Generator" },
@@ -24,6 +25,8 @@ export default function Page() {
   };
 
   return (
+    <>
+    <StarfieldBackground />
     <div className="min-h-screen bg-stellarBg bg-gradient-to-br from-stellarBg via-[#2C2F58] to-stellarIndigo text-white font-sans relative overflow-x-hidden">
       <Navigation sections={SECTIONS} onNavigate={handleNavigate} />
 
@@ -148,5 +151,7 @@ export default function Page() {
         &copy; {new Date().getFullYear()} SecurePass – Stellar Styled Password Generator
       </footer>
     </div>
+    </>
+    
   );
 }

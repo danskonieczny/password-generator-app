@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 
 export default function PasswordGenerator() {
@@ -19,9 +19,14 @@ export default function PasswordGenerator() {
   ].filter(Boolean).join("");
 
   function generate() {
+    if (!charset) {
+      setPwd("");
+      return;
+    }
     let out = "";
-    for (let i = 0; i < length; ++i)
+    for (let i = 0; i < length; ++i) {
       out += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
     setPwd(out);
     setCopied(false);
   }
@@ -33,10 +38,18 @@ export default function PasswordGenerator() {
     setTimeout(() => setCopied(false), 1200);
   }
 
+  // Automatyczne generowanie hasła przy każdej zmianie opcji:
+  useEffect(() => {
+    generate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [length, upper, lower, number, symbol]);
+
   return (
     <div className="rounded-2xl shadow-xl p-8 bg-stellarCard/80 border border-stellarAccent/30 text-white">
       <div>
-        <label className="block mb-2 font-semibold text-stellarIndigo">Długość hasła <span className="text-stellarAccent">{length}</span></label>
+        <label className="block mb-2 font-semibold text-stellarIndigo">
+          Długość hasła <span className="text-stellarAccent">{length}</span>
+        </label>
         <input
           type="range"
           min={8}
@@ -47,10 +60,42 @@ export default function PasswordGenerator() {
         />
       </div>
       <div className="flex gap-4 flex-wrap my-6 text-sm">
-        <label><input type="checkbox" checked={upper} onChange={e => setUpper(e.target.checked)} className="accent-stellarAccent mr-1" />Wielkie litery</label>
-        <label><input type="checkbox" checked={lower} onChange={e => setLower(e.target.checked)} className="accent-stellarAccent mr-1" />Małe litery</label>
-        <label><input type="checkbox" checked={number} onChange={e => setNumber(e.target.checked)} className="accent-stellarAccent mr-1" />Cyfry</label>
-        <label><input type="checkbox" checked={symbol} onChange={e => setSymbol(e.target.checked)} className="accent-stellarAccent mr-1" />Symbole</label>
+        <label>
+          <input
+            type="checkbox"
+            checked={upper}
+            onChange={e => setUpper(e.target.checked)}
+            className="accent-stellarAccent mr-1"
+          />
+          Wielkie litery
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={lower}
+            onChange={e => setLower(e.target.checked)}
+            className="accent-stellarAccent mr-1"
+          />
+          Małe litery
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={number}
+            onChange={e => setNumber(e.target.checked)}
+            className="accent-stellarAccent mr-1"
+          />
+          Cyfry
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={symbol}
+            onChange={e => setSymbol(e.target.checked)}
+            className="accent-stellarAccent mr-1"
+          />
+          Symbole
+        </label>
       </div>
       <button
         onClick={generate}
