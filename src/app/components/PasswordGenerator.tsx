@@ -34,48 +34,48 @@ export default function PasswordGenerator() {
   }
 
   return (
-    <div className="rounded-2xl shadow-xl p-7 bg-gradient-to-br from-indigo-50/70 via-white to-pink-50/60">
+    <div className="rounded-2xl shadow-xl p-8 bg-stellarCard/80 border border-stellarAccent/30 text-white">
       <div>
-        <label className="block mb-2 font-semibold">Długość hasła <span className="text-indigo-500">{length}</span></label>
+        <label className="block mb-2 font-semibold text-stellarIndigo">Długość hasła <span className="text-stellarAccent">{length}</span></label>
         <input
           type="range"
           min={8}
           max={32}
           value={length}
           onChange={e => setLength(+e.target.value)}
-          className="accent-indigo-600 w-full"
+          className="accent-stellarAccent w-full"
         />
       </div>
-      <div className="flex gap-3 flex-wrap my-5 text-sm">
-        <label><input type="checkbox" checked={upper} onChange={e => setUpper(e.target.checked)} className="accent-indigo-500 mr-1" />Wielkie litery</label>
-        <label><input type="checkbox" checked={lower} onChange={e => setLower(e.target.checked)} className="accent-indigo-500 mr-1" />Małe litery</label>
-        <label><input type="checkbox" checked={number} onChange={e => setNumber(e.target.checked)} className="accent-indigo-500 mr-1" />Cyfry</label>
-        <label><input type="checkbox" checked={symbol} onChange={e => setSymbol(e.target.checked)} className="accent-indigo-500 mr-1" />Symbole</label>
+      <div className="flex gap-4 flex-wrap my-6 text-sm">
+        <label><input type="checkbox" checked={upper} onChange={e => setUpper(e.target.checked)} className="accent-stellarAccent mr-1" />Wielkie litery</label>
+        <label><input type="checkbox" checked={lower} onChange={e => setLower(e.target.checked)} className="accent-stellarAccent mr-1" />Małe litery</label>
+        <label><input type="checkbox" checked={number} onChange={e => setNumber(e.target.checked)} className="accent-stellarAccent mr-1" />Cyfry</label>
+        <label><input type="checkbox" checked={symbol} onChange={e => setSymbol(e.target.checked)} className="accent-stellarAccent mr-1" />Symbole</label>
       </div>
       <button
         onClick={generate}
-        className="w-full py-3 font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-lg shadow transition"
+        className="w-full py-3 font-bold rounded-lg bg-stellarAccent hover:bg-[#ff874c] text-white text-lg shadow-xl transition"
       >
         Generuj hasło
       </button>
       {pwd && (
-        <div className="mt-6"> 
+        <div className="mt-6">
           <div className="relative">
             <input
               value={pwd}
               readOnly
               spellCheck={false}
-              className="w-full px-4 py-3 rounded-lg border text-xl font-mono tracking-widest bg-gray-50 outline-indigo-500"
+              className="w-full px-4 py-3 rounded-lg border text-xl font-mono tracking-widest bg-stellarBg/80 outline-stellarAccent text-white"
               style={{ letterSpacing: "0.12em" }}
             />
             <button
               onClick={copy}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-100 hover:bg-indigo-500 hover:text-white border-indigo-200 border px-3 py-1 rounded font-semibold shadow transition text-indigo-700"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-stellarAccent/80 text-white border-2 border-white/10 px-3 py-1 rounded font-semibold shadow-lg transition hover:bg-stellarAccent"
             >
               {copied ? <Check size={22} /> : "Kopiuj"}
             </button>
           </div>
-          <div className="mt-2 text-xs text-gray-500 text-right">Hasło jest generowane lokalnie</div>
+          <div className="mt-2 text-xs text-stellarIndigo/80 text-right">Hasło generowane lokalnie</div>
         </div>
       )}
     </div>

@@ -1,5 +1,4 @@
 "use client";
-
 import { useRef } from "react";
 import Navigation from "./components/Navigation";
 import PasswordGenerator from "./components/PasswordGenerator";
@@ -18,106 +17,111 @@ export default function Page() {
     trivia: useRef<HTMLElement>(null),
     faq: useRef<HTMLElement>(null),
     tips: useRef<HTMLElement>(null),
-    stats: useRef<HTMLElement>(null),
+    stats: useRef<HTMLElement>(null)
   };
-
   const handleNavigate = (key: string) => {
     refs[key as keyof typeof refs]?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div className="bg-gradient-to-bl min-h-screen from-indigo-100 via-violet-200 to-fuchsia-100 text-gray-900">
+    <div className="min-h-screen bg-stellarBg bg-gradient-to-br from-stellarBg via-[#2C2F58] to-stellarIndigo text-white font-sans relative overflow-x-hidden">
       <Navigation sections={SECTIONS} onNavigate={handleNavigate} />
 
       {/* Generator */}
-      <section ref={refs.generator} id="generator" className="pt-24 pb-20 px-4 md:px-0 flex flex-col items-center">
-        <h1 className="text-4xl md:text-5xl text-indigo-700 font-black mb-3 text-center">Nowoczesny Generator Haseł</h1>
-        <div className="text-lg mb-8 max-w-2xl text-center text-gray-700 font-medium">
-          Bezpieczne, losowe hasła generowane lokalnie na Twoim urządzeniu. 
-        </div>
+      <section ref={refs.generator} id="generator" className="pt-32 pb-16 flex flex-col items-center">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-center tracking-tight text-white mb-5 drop-shadow-lg">
+          Generator haseł
+        </h1>
+        <p className="text-center text-lg mb-10 text-stellarIndigo/90 max-w-xl mx-auto font-medium">
+          Twórz unikalne, silne hasła.
+        </p>
         <div className="w-full max-w-lg">
           <PasswordGenerator />
         </div>
       </section>
-      
-      {/* Trivia */}
-      <section ref={refs.trivia} id="trivia" className="relative pt-24 pb-20 px-4 bg-gradient-to-r from-indigo-400/10 to-pink-400/10 backdrop-blur-lg">
-        <h2 className="text-3xl font-bold text-pink-600 text-center mb-6">Ciekawostki o Hasłach</h2>
-        <div className="max-w-2xl mx-auto grid gap-6">
-          <div className="bg-white/80 rounded-xl p-6 shadow-md border-l-8 border-pink-400">
-            <b>Najpopularniejsze hasło wciąż to <span className="text-pink-600">123456</span>.</b><br />
-            Zawsze używaj unikalnych haseł!
+
+      {/* Ciekawostki */}
+      <section ref={refs.trivia} id="trivia" className="py-20 bg-stellarCard/80 border-y border-white/10">
+        <h2 className="text-3xl font-bold mb-6 text-stellarIndigo text-center">Ciekawostki o Hasłach</h2>
+        <div className="max-w-3xl mx-auto grid gap-8 md:grid-cols-2">
+          <div className="p-7 rounded-2xl shadow-lg bg-white/5 border border-stellarAccent/30">
+            <span className="text-stellarAccent font-semibold">Najpopularniejsze hasło to wciąż „123456”.</span>
+            <div className="text-stellarIndigo/80 mt-2">Dbaj o unikalność i złożoność!</div>
           </div>
-          <div className="bg-white/80 rounded-xl p-6 shadow-md border-l-8 border-violet-400">
-            <b>Hasło o długości 12 znaków z symbolami jest nie do złamania dla zwykłego komputera przez miliony lat!</b>
+          <div className="p-7 rounded-2xl shadow-lg bg-white/5 border border-stellarIndigo/30">
+            <span className="text-stellarIndigo font-semibold">12-znakowe hasło z symbolami to miliony lat łamania metodą brute-force.</span>
           </div>
-          <div className="bg-white/80 rounded-xl p-6 shadow-md border-l-8 border-indigo-400">
-            <b>2/3 wycieków danych to efekt użycia tego samego hasła na różnych stronach.</b>
+          <div className="p-7 rounded-2xl shadow-lg bg-white/5 border border-stellarPurple/30">
+            <span className="text-stellarPurple font-semibold">2/3 wycieków to efekt powtarzania tego samego hasła.</span>
+          </div>
+          <div className="p-7 rounded-2xl shadow-lg bg-white/5 border border-stellarAccent/30">
+            <span className="text-stellarAccent font-semibold">Włącz 2FA – podwójna ochrona kont!</span>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section ref={refs.faq} id="faq" className="pt-24 pb-20 px-4">
-        <h2 className="text-3xl font-bold text-indigo-600 text-center mb-6">FAQ</h2>
-        <div className="max-w-2xl mx-auto space-y-4">
+      <section ref={refs.faq} id="faq" className="py-20">
+        <h2 className="text-3xl font-bold mb-6 text-center text-stellarAccent">FAQ</h2>
+        <div className="max-w-2xl mx-auto">
           {[
-            {
-              q: "Czy hasła generowane są bezpieczne?",
-              a: "Tak! Generator działa wyłącznie w Twojej przeglądarce. Każde hasło jest naprawdę losowe i nie trafia do sieci."
-            },
-            {
-              q: "Czy powinienem kopiować hasła z generatora?",
-              a: "Kopiowanie jest wygodne, jednak najlepiej korzystać z menedżera haseł."
-            },
-            {
-              q: "Dlaczego warto ustawić symbol/cyfrę w haśle?",
-              a: "Każda dodatkowa grupa znaków wielokrotnie zwiększa czas łamania hasła."
-            }
-          ].map((item, i) => (
-            <details key={i} className="bg-gray-50 rounded-xl px-5 py-4 shadow font-medium">
-              <summary className="cursor-pointer text-lg">{item.q}</summary>
-              <div className="mt-2 text-gray-700">{item.a}</div>
-            </details>
+              {
+                q: "Czy hasła są generowane bezpiecznie?",
+                a: "Hasła powstają lokalnie i nigdy nie są wysyłane w sieć."
+              },
+              {
+                q: "Czemu warto korzystać z menedżera haseł?",
+                a: "Możesz zapisywać bardzo złożone hasła bez obaw o zapomnienie."
+              },
+              {
+                q: "Czy kopiowanie hasła jest bezpieczne?",
+                a: "Najlepiej wklejać hasło tylko do zaufanych aplikacji. Później wyczyść schowek."
+              }
+            ].map((item, i) => (
+              <details key={i} className="mb-4 bg-stellarCard/60 rounded-xl px-6 py-5 shadow-md border-l-4 border-stellarAccent">
+                <summary className="cursor-pointer text-lg">{item.q}</summary>
+                <div className="mt-2 text-stellarIndigo/90">{item.a}</div>
+              </details>
           ))}
         </div>
       </section>
 
-      {/* Tips */}
-      <section ref={refs.tips} id="tips" className="pt-24 pb-20 px-4 bg-gradient-to-r from-fuchsia-200/80 via-white/70 to-indigo-200/80">
-        <h2 className="text-3xl font-bold text-fuchsia-600 text-center mb-6">Szybkie wskazówki</h2>
-        <div className="max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto">
+      {/* Wskazówki */}
+      <section ref={refs.tips} id="tips" className="py-20 bg-gradient-to-r from-stellarCard/50 to-stellarIndigo/30">
+        <h2 className="text-3xl font-bold mb-8 text-stellarPurple text-center">Szybkie wskazówki</h2>
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
-            "Nigdy nie używaj tego samego hasła dla kilku kont.",
-            "Zawsze ustawiaj jak najdłuższe hasła.",
-            "Korzystaj z menedżera haseł, by nie zapomnieć kombinacji.",
-            "Dodaj 2FA wszędzie, gdzie to możliwe.",
-            "Unikaj prawdziwych słów w haśle.",
-            "Nie udostępniaj haseł innym osobom."
-          ].map((tip, i) => (
-            <div key={i} className="rounded-xl p-5 shadow bg-white/90 border-l-4 border-fuchsia-500 font-medium">{tip}</div>
+            "Nie używaj tego samego hasła w kilku serwisach.",
+            "Im dłuższe hasło – tym lepiej.",
+            "Zawsze korzystaj z menedżera haseł.",
+            "Dodaj 2FA, gdzie to możliwe.",
+            "Nie udostępniaj haseł nikomu.",
+            "Wymyślaj hasła, które nie są słowami słownikowymi."
+            ].map((tip, i) => (
+              <div key={i} className="rounded-xl bg-stellarCard/80 border-l-4 border-stellarAccent/70 p-6 font-medium shadow">
+                {tip}
+              </div>
           ))}
         </div>
       </section>
 
-      {/* Stats */}
-      <section ref={refs.stats} id="stats" className="pt-24 pb-20 px-4 bg-gradient-to-l from-indigo-400/10 to-pink-400/10">
-        <h2 className="text-3xl font-bold text-blue-700 text-center mb-8">Statystyki haseł i bezpieczeństwa</h2>
-
+      {/* Statystyki */}
+      <section ref={refs.stats} id="stats" className="pt-20 pb-16 border-t border-white/10">
+        <h2 className="text-3xl font-bold mb-8 text-center text-stellarIndigo">Statystyki bezpieczeństwa</h2>
         <div className="max-w-2xl mx-auto space-y-8">
-          <div className="flex flex-col md:flex-row md:gap-8 gap-4">
-            <div className="flex-1 bg-white/80 shadow p-6 rounded-xl border-l-8 border-blue-400">
-              <span className="text-blue-600 font-bold text-xl">80%</span><br />
-              <span className="text-gray-700">ataków na konta jest wynikiem słabego hasła</span>
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex-1 bg-stellarCard/80 shadow p-7 rounded-xl border-l-8 border-stellarAccent/60">
+              <span className="text-stellarAccent text-2xl font-bold">80%</span><br />
+              <span className="text-white/90">ataków to efekt słabych haseł</span>
             </div>
-            <div className="flex-1 bg-white/80 shadow p-6 rounded-xl border-l-8 border-indigo-500">
-              <span className="text-indigo-700 font-bold text-xl">34%</span><br />
-              <span className="text-gray-700">użytkowników korzysta z 2FA</span>
+            <div className="flex-1 bg-stellarCard/80 shadow p-7 rounded-xl border-l-8 border-stellarPurple/60">
+              <span className="text-stellarPurple text-2xl font-bold">34%</span><br />
+              <span className="text-white/90">osób korzysta z 2FA</span>
             </div>
           </div>
-          <table className="w-full bg-white/80 shadow rounded-xl overflow-hidden text-center">
-            <thead>
-              <tr className="bg-indigo-200/30 font-bold">
+          <table className="w-full bg-white/5 shadow rounded-xl overflow-hidden text-center border border-white/10">
+            <thead className="bg-stellarCard/30 text-stellarIndigo font-bold">
+              <tr>
                 <th className="py-2">Długość hasła</th>
                 <th className="py-2">Czas łamania (brute-force)</th>
               </tr>
@@ -130,7 +134,7 @@ export default function Page() {
                 { len: 12, time: "34 tys. lat" },
                 { len: 14, time: "200 mln lat" }
               ].map((row, i) => (
-                <tr key={i} className={i%2===0 ? "bg-indigo-50/30" : ""}>
+                <tr key={i} className={i%2===0 ? "bg-stellarCard/40" : ""}>
                   <td className="py-2">{row.len} znaków</td>
                   <td className="py-2">{row.time}</td>
                 </tr>
@@ -140,9 +144,8 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Stopka */}
-      <footer className="text-center py-8 opacity-70 text-xs">
-        &copy; {new Date().getFullYear()} SecurePass – Generator haseł na zawsze za darmo. 
+      <footer className="text-center py-10 opacity-70 text-xs">
+        &copy; {new Date().getFullYear()} SecurePass – Stellar Styled Password Generator
       </footer>
     </div>
   );
